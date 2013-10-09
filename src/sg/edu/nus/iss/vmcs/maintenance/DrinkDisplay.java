@@ -14,10 +14,8 @@ import sg.edu.nus.iss.vmcs.store.*;
 import sg.edu.nus.iss.vmcs.util.*;
 
 /**
- *
- *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 1.0
+ * @author Chen Changfeng
  */
 
 public class DrinkDisplay extends Panel {
@@ -55,8 +53,8 @@ public class DrinkDisplay extends Panel {
 		tp.add(bi);
 		curIdx = 0;
 		this.add("Center", tp);
-		this.add("South", price);
-		price.setEnabled(false);
+		this.add("South", (Panel)price.getLabelledDisplay());
+		price.getLabelledDisplay().setEnabled(false);
 	}
 
 	public LabelledDisplay getPriceDisplay() {
@@ -71,7 +69,7 @@ public class DrinkDisplay extends Panel {
 	public void displayQty(int idx, int qty) throws VMCSException {
 		curIdx = idx;
 		bi.clear();
-		price.setEnabled(true);
+		price.getLabelledDisplay().setEnabled(true);
 		bi.displayQty(idx, qty);
 	}
 

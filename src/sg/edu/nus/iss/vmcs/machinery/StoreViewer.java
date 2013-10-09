@@ -14,10 +14,8 @@ import sg.edu.nus.iss.vmcs.store.*;
 import sg.edu.nus.iss.vmcs.util.*;
 
 /**
- *
- *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 1.0
+ * @author Chen Changfeng
  */
 
 public class StoreViewer extends Panel {
@@ -62,7 +60,7 @@ public class StoreViewer extends Panel {
 						LabelledDisplay.GRID);
 			viewItems[i].addListener(
                         new StoreViewerListener(type, i, storeCtrl));
-			this.add(viewItems[i]);
+			this.add((Panel)viewItems[i].getLabelledDisplay());
 		}
 		
 		update();

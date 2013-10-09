@@ -8,16 +8,24 @@ package sg.edu.nus.iss.vmcs.maintenance;
  *
  */
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
 
-import sg.edu.nus.iss.vmcs.store.*;
-import sg.edu.nus.iss.vmcs.util.*;
+import sg.edu.nus.iss.vmcs.store.Store;
+import sg.edu.nus.iss.vmcs.util.LabelledDisplay;
+import sg.edu.nus.iss.vmcs.util.VMCSException;
+import sg.edu.nus.iss.vmcs.util.WarningDisplay;
 
 /**
- *
- *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 1.0
+ * @author Chen Changfeng
  */
 
 public class MaintenancePanel extends Dialog {
@@ -61,7 +69,7 @@ public class MaintenancePanel extends Dialog {
 		tp3.add(validPswd);
 		tp3.add(invalidPswd);
 		tpn.add(tp1);
-		tpn.add(password);
+		tpn.add((Panel)password.getLabelledDisplay());
 		tpn.add(tp3);
 
 		// center part
@@ -94,7 +102,7 @@ public class MaintenancePanel extends Dialog {
 
 		tp5.add(totalCash);
 		tp5.add(tp6);
-		tp5.add(collectCash);
+		tp5.add((Panel)collectCash.getLabelledDisplay());
 		tp5.add(exitBtn);
 		tpc.setLayout(new BorderLayout());
 		Panel pp = new Panel();

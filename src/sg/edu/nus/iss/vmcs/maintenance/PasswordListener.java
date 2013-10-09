@@ -11,14 +11,15 @@ package sg.edu.nus.iss.vmcs.maintenance;
 import java.awt.event.*;
 import java.awt.*;
 
+import sg.edu.nus.iss.vmcs.uifactory.EventArgs;
+import sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler;
+
 /**
- *
- *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 1.0
+ * @author Chen Changfeng
  */
 
-public class PasswordListener implements ActionListener {
+public class PasswordListener implements ActionListener, VMCSEventHandler {
 
 	AccessManager actrl;
 
@@ -33,5 +34,10 @@ public class PasswordListener implements ActionListener {
 		text = (TextField) e.getSource();
 		pswd = text.getText();
 		actrl.processPassword(pswd);
+	}
+	
+	public void vmcsActionPerformed(Object eventSource, EventArgs args) {
+		ActionEvent event = new ActionEvent(null, 0, null);
+		this.actionPerformed(event);
 	}
 }
