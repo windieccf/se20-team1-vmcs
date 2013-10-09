@@ -11,14 +11,15 @@ package sg.edu.nus.iss.vmcs.maintenance;
 import java.awt.event.*;
 import java.awt.*;
 
+import sg.edu.nus.iss.vmcs.uifactory.EventArgs;
+import sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler;
+
 /**
- *
- *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 1.0
+ * @author Chen Changfeng
  */
 
-public class PriceDisplayListener implements ActionListener {
+public class PriceDisplayListener implements ActionListener, VMCSEventHandler {
 	private MaintenanceController mctrl;
 
 	public PriceDisplayListener(MaintenanceController mc) {
@@ -36,5 +37,10 @@ public class PriceDisplayListener implements ActionListener {
 		ip = Integer.parseInt(sp);
 
 		mctrl.setPrice(ip);
+	}
+	
+	public void vmcsActionPerformed(Object eventSource, EventArgs args) {
+		ActionEvent event = new ActionEvent(null, 0, null);
+		this.actionPerformed(event);
 	}
 }

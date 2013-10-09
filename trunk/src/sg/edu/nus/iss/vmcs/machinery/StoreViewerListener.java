@@ -19,8 +19,10 @@ import java.awt.*;
  */
 
 import sg.edu.nus.iss.vmcs.store.StoreController;
+import sg.edu.nus.iss.vmcs.uifactory.EventArgs;
+import sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler;
 
-public class StoreViewerListener implements ActionListener {
+public class StoreViewerListener implements ActionListener, VMCSEventHandler {
 
 	private int type;
 	private int item;
@@ -41,5 +43,10 @@ public class StoreViewerListener implements ActionListener {
 		sqty = vf.getText();
 		qty = Integer.parseInt(sqty);
 		storeCtrl.changeStoreQty(type, item, qty);
+	}
+	
+	public void vmcsActionPerformed(Object eventSource, EventArgs args) {
+		ActionEvent event = new ActionEvent(null, 0, null);
+		this.actionPerformed(event);
 	}
 }
