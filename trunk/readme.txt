@@ -23,3 +23,11 @@ Changed logs for each pattern
 /src/sg/edu/nus/iss/vmcs/maintenance/MaintenancePanel.java
 /src/sg/edu/nus/iss/vmcs/maintenance/PasswordListener.java
 /src/sg/edu/nus/iss/vmcs/maintenance/PriceDisplayListener.java
+
+2. Iterator Pattern
+/sg/edu/nus/iss/vmcs/machinery/MachineryController.java
+/sg/edu/nus/iss/vmcs/store/CashStore.java
+/sg/edu/nus/iss/vmcs/store/CashStoreIterator.java
+/sg/edu/nus/iss/vmcs/store/Coin.java
+/sg/edu/nus/iss/vmcs/store/StoreController.java
+/sg/edu/nus/iss/vmcs/store/StoreIterator.java

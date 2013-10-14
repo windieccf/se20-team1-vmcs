@@ -43,5 +43,11 @@ public class Coin extends StoreObject {
     public int getValue () {
         return (value);
     }
+    
+    public int compareTo(Object arg0) {
+    	if(arg0==null || !(arg0 instanceof Coin))
+    		return 1;
+		return this.value-((Coin)arg0).value;
+	}
 
   }

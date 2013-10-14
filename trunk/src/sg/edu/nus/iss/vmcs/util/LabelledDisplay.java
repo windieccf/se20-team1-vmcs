@@ -20,8 +20,6 @@ import sg.edu.nus.iss.vmcs.uifactory.UIFactory;
 import sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler;
 
 /**
- *
- *
  * @version 1.0
  * @author Chen Changfeng
  */

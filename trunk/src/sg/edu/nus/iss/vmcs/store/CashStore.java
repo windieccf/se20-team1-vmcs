@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.vmcs.store;
 
+import java.util.Comparator;
+
 /*
  * Copyright 2003 ISS.
  * The contents contained in this document may not be reproduced in any
@@ -21,6 +23,11 @@ public class CashStore extends Store {
 
 	public CashStore() {
 	}
+	
+	public StoreIterator createIterator(Comparator comp) {
+        return new CashStoreIterator(this, comp);
+    }
+
 	
 	public int findCashStoreIndex (Coin c) {
 		int size = getStoreSize();

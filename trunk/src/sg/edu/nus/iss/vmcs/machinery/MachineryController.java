@@ -128,11 +128,14 @@ public class MachineryController {
 			ml.getCashStoreDisplay().update();
 
 	}
-
-	public void giveChange(int idx, int numOfCoins) throws VMCSException {
-		storeCtrl.giveChange(idx, numOfCoins);
-		if (ml != null)
-			ml.getCashStoreDisplay().update();
+	
+	/**
+	 * Iterator pattern
+	 * @param changeRequired
+	 * @throws VMCSException
+	 */
+	public void giveChange(int changeRequired) throws VMCSException {
+		storeCtrl.giveChange(changeRequired);
 	}
 
 }
