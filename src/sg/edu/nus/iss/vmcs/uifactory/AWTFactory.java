@@ -6,7 +6,10 @@ import sg.edu.nus.iss.vmcs.uifactory.awt.AWTConcretePanel;
 import sg.edu.nus.iss.vmcs.uifactory.awt.AWTConcreteTextField;
 
 
-
+/**
+ * @version 1.0
+ * @author Chen Changfeng
+ */
 public class AWTFactory extends UIFactory {
 	
 	@Override

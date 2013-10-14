@@ -9,6 +9,7 @@ package sg.edu.nus.iss.vmcs.store;
  */
 
 import java.io.*;
+import java.util.Comparator;
 
 /**
  *
@@ -198,11 +199,58 @@ public class StoreController {
 		else
 			return (Store) dStore;
 	}
-
-	public void giveChange(int idx, int numOfCoins)  {
+	
+	/**
+	 * Iterator pattern based on Denomination descending strategy
+	 * @param change
+	 * @return
+	 */
+	public int giveChange(int change) {
 		CashStoreItem item;
-		item = (CashStoreItem) getStoreItem(Store.CASH, idx);
-		for (int i = 0; i < numOfCoins; i++)
-			item.decrement();
+		StoreIterator ite = cStore
+				.createIterator(new CashDenominationDescComparator());
+		while (ite.hasNext()) {
+			item = (CashStoreItem) ite.next();
+			int coinsNumber = change / ((Coin) item.getContent()).getValue();
+			if (coinsNumber > 0) {
+				coinsNumber = Math.min(coinsNumber, item.getQuantity());
+				for (int i = 0; i < coinsNumber; i++)
+					item.decrement();
+				change -= ((Coin) item.getContent()).getValue() * coinsNumber;
+			}
+			if (change == 0)
+				break;
+		}
+		return change;
+	}
+	
+	/**
+	 * Traversing strategy: Denomination ascending
+	 * @author Yue Yang
+	 *
+	 */
+	class CashDenominationAscComparator implements Comparator {
+
+		public int compare(Object obj1, Object obj2) {
+			CashStoreItem item1 = (CashStoreItem) obj1;
+			CashStoreItem item2 = (CashStoreItem) obj2;
+			return ((Coin) item1.getContent()).compareTo(((Coin) item2
+					.getContent()));
+		}
+	}
+	
+	/**
+	 * Traversing strategy: Denomination descending
+	 * @author Yue Yang
+	 *
+	 */
+	class CashDenominationDescComparator implements Comparator {
+
+		public int compare(Object obj1, Object obj2) {
+			CashStoreItem item1 = (CashStoreItem) obj1;
+			CashStoreItem item2 = (CashStoreItem) obj2;
+			return ((Coin) item2.getContent()).compareTo(((Coin) item1
+					.getContent()));
+		}
 	}
 }

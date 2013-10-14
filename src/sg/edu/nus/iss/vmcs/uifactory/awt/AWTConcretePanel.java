@@ -6,7 +6,10 @@ import java.awt.Panel;
 
 import  sg.edu.nus.iss.vmcs.uifactory.AbstractPanel;
 import  sg.edu.nus.iss.vmcs.uifactory.VMCSComponent;
-
+/**
+ * @version 1.0
+ * @author Chen Changfeng
+ */
 public class AWTConcretePanel extends Panel implements AbstractPanel {
 	
 	@Override

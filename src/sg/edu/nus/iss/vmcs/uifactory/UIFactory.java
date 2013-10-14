@@ -1,5 +1,8 @@
 package sg.edu.nus.iss.vmcs.uifactory;
-
+/**
+ * @version 1.0
+ * @author Chen Changfeng
+ */
 public abstract class UIFactory {
 
 	private static UIFactory singleton;
