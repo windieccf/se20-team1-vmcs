@@ -9,6 +9,8 @@ package sg.edu.nus.iss.vmcs.maintenance;
  */
 
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
 import sg.edu.nus.iss.vmcs.store.*;
 import sg.edu.nus.iss.vmcs.system.*;
@@ -22,7 +24,7 @@ import sg.edu.nus.iss.vmcs.util.*;
  * @author Olivo Miotto, Pang Ping Li
  */
 
-public class MaintenanceController {
+public class MaintenanceController implements Observer{
 
 	private MainController mCtrl;
 	private MaintenancePanel mpanel;
@@ -31,6 +33,11 @@ public class MaintenanceController {
 	public MaintenanceController(MainController mctrl) {
 		mCtrl = mctrl;
 		am = new AccessManager(this);
+		StoreController sctrl = mCtrl.getStoreController();
+		StoreItem[] items = sctrl.getStoreItems(Store.CASH);
+		for(int i=0; i<items.length; i++){
+			items[i].addObserver(this);
+		}
 	}
 
 	public MainController getMainController() {
@@ -107,7 +114,6 @@ public class MaintenanceController {
 		StoreController sctrl = mCtrl.getStoreController();
 		int tc = sctrl.getTotalCash();
 		mpanel.displayTotalCash(tc);
-
 	}
 
 	// TransferCashButtonListener
@@ -167,6 +173,25 @@ public class MaintenanceController {
 	public void closeDown() {
 		if (mpanel != null)
 			mpanel.closeDown();
+	}
+	
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		StoreController sctrl = mCtrl.getStoreController();
+		StoreItem[] items = sctrl.getStoreItems(Store.CASH);
+		for (int i = 0; i < items.length; i++) {
+			if (arg0 == items[i]) {
+				int val = items[i].getQuantity();
+				try {
+					mpanel.getCoinDisplay().displayQty(i, val);
+				} catch (VMCSException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+		this.getTotalCash();
 	}
 
 }
