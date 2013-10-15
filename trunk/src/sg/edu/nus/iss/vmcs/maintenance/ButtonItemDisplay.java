@@ -1,4 +1,6 @@
 package sg.edu.nus.iss.vmcs.maintenance;
+import java.util.Observable;
+import java.util.Observer;
 
 /*
  * Copyright 2003 ISS.
@@ -21,14 +23,17 @@ import sg.edu.nus.iss.vmcs.util.VMCSException;
  * @author Olivo Miotto, Pang Ping Li
  */
 
-public class ButtonItemDisplay extends Panel {
+public class ButtonItemDisplay extends Panel implements Observer{
 
 	private ButtonItem items[];
 	private int len;
 	private Label lb;
+	private StoreItem[] storeItems;
 
 	public ButtonItemDisplay(String title, StoreItem sitem[], int length) {
 
+		storeItems = sitem;
+		
 		len = length;
 		System.out.println("ButtonItemDisplay:" + len);
 		Panel tp1 = new Panel();
@@ -52,6 +57,9 @@ public class ButtonItemDisplay extends Panel {
 					ButtonItem.DEFAULT_LEN,
 					ButtonItem.GRID);
 			this.add(items[i]);
+			
+			// Add observer by Yifei
+			sitem[i].addObserver(this);
 		}
 
 	}
@@ -85,6 +93,16 @@ public class ButtonItemDisplay extends Panel {
 			throw new VMCSException("ButtomDisplay.setQty", "Index over flow");
 
 		items[idx].setValue(qty);
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		for(int i=0; i<items.length; i++){
+			int val = storeItems[i].getQuantity();
+			String sval = String.valueOf(val);
+			items[i].setValue(sval);
+		}
 	}
 
 }

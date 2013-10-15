@@ -1,4 +1,6 @@
 package sg.edu.nus.iss.vmcs.machinery;
+import java.util.Observable;
+import java.util.Observer;
 
 /*
  * Copyright 2003 ISS.
@@ -18,7 +20,7 @@ import sg.edu.nus.iss.vmcs.util.*;
  * @author Chen Changfeng
  */
 
-public class StoreViewer extends Panel {
+public class StoreViewer extends Panel implements Observer{
 
 	private LabelledDisplay viewItems[];
 	private StoreController storeCtrl;
@@ -63,6 +65,11 @@ public class StoreViewer extends Panel {
 			this.add((Panel)viewItems[i].getLabelledDisplay());
 		}
 		
+		// Add Observer - by Yifei
+		for(int i=0; i< sSize; i++){
+			storeItem[i].addObserver(this);
+		}
+		
 		update();
 	}
 
@@ -87,5 +94,11 @@ public class StoreViewer extends Panel {
 
 	public void setActive(boolean state) {
 		this.setEnabled(state);
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		update();
 	}
 }
