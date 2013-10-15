@@ -29,11 +29,9 @@ public class ButtonItemDisplay extends Panel implements Observer{
 	private int len;
 	private Label lb;
 	private StoreItem[] storeItems;
-
+	
 	public ButtonItemDisplay(String title, StoreItem sitem[], int length) {
 
-//		storeItems = sitem;
-		
 		len = length;
 		System.out.println("ButtonItemDisplay:" + len);
 		Panel tp1 = new Panel();
@@ -99,14 +97,16 @@ public class ButtonItemDisplay extends Panel implements Observer{
 
 	@Override
 	public void update(Observable p, Object x){
-		refresh();
+		refresh(p);
 	}
 	
-	private void refresh(){
+	private void refresh(Observable p) {
 		for (int i = 0; i < items.length; i++) {
-			int val = storeItems[i].getQuantity();
-			String sval = String.valueOf(val);
-			items[i].setValue(sval);
+			if (p == storeItems[i]) {
+				int val = storeItems[i].getQuantity();
+				String sval = String.valueOf(val);
+				items[i].setValue(sval);
+			}
 		}
 	}
 
