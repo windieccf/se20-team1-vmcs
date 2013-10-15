@@ -10,7 +10,7 @@ import  sg.edu.nus.iss.vmcs.uifactory.VMCSComponent;
  * @version 1.0
  * @author Chen Changfeng
  */
-public class AWTConcretePanel extends Panel implements AbstractPanel {
+public class AwtPanelAdapter extends Panel implements AbstractPanel {
 	
 	@Override
 	public void add(VMCSComponent component) {

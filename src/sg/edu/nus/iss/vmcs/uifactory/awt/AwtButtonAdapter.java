@@ -9,7 +9,7 @@ import sg.edu.nus.iss.vmcs.uifactory.AbstractButton;
  * @version 1.0
  * @author Chen Changfeng
  */
-public class AWTConcreteButton extends Button implements AbstractButton {
+public class AwtButtonAdapter extends Button implements AbstractButton {
 	
 	public void addEventHandler(sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler e) {
 		if (e instanceof ActionListener) {
