@@ -23,7 +23,6 @@ public class StoreItem extends Observable{
 
 	public StoreItem(StoreObject content, int quantity) {
 		this.content = content;
-		setChanged();
 		this.quantity = quantity;
 	}
 
@@ -37,6 +36,7 @@ public class StoreItem extends Observable{
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		setChanged();
 		notifyObservers();
 	}
 

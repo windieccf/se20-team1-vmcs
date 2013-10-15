@@ -96,9 +96,11 @@ public class StoreViewer extends Panel implements Observer{
 		this.setEnabled(state);
 	}
 
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+	public void update(Observable p, Object x) {
+		refresh();
+	}
+
+	public void refresh() {
 		update();
 	}
 }
