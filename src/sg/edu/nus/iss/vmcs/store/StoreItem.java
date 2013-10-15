@@ -1,4 +1,5 @@
 package sg.edu.nus.iss.vmcs.store;
+import java.util.Observable;
 
 /*
  * Copyright 2003 ISS.
@@ -15,13 +16,14 @@ package sg.edu.nus.iss.vmcs.store;
  * @author Olivo Miotto, Pang Ping Li
  */
 
-public class StoreItem {
+public class StoreItem extends Observable{
 
 	private StoreObject content;
 	private int quantity;
 
 	public StoreItem(StoreObject content, int quantity) {
 		this.content = content;
+		setChanged();
 		this.quantity = quantity;
 	}
 
@@ -35,6 +37,7 @@ public class StoreItem {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+		notifyObservers();
 	}
 
 	public int getQuantity() {
