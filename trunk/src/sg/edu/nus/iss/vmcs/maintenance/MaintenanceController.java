@@ -85,8 +85,9 @@ public class MaintenanceController {
 		try {
 			item = (DrinksStoreItem) sctrl.getStoreItem(Store.DRINK, idx);
 			DrinksBrand db = (DrinksBrand) item.getContent();
+			db.setStrategy("STRATEGY_CBD");
 			mpanel.getDrinksDisplay().displayQty(idx, item.getQuantity());
-			mpanel.displayPrice(db.getPrice());
+			mpanel.displayPrice(db.getSellingPrice());
 		} catch (VMCSException e) {
 			System.out.println("MaintenanceController.displayDrink:" + e);
 		}
