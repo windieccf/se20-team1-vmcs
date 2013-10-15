@@ -1,6 +1,4 @@
 package sg.edu.nus.iss.vmcs.maintenance;
-import java.util.Observable;
-import java.util.Observer;
 
 /*
  * Copyright 2003 ISS.
@@ -23,12 +21,15 @@ import sg.edu.nus.iss.vmcs.util.VMCSException;
  * @author Olivo Miotto, Pang Ping Li
  */
 
-public class ButtonItemDisplay extends Panel implements Observer{
+public class ButtonItemDisplay extends Panel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ButtonItem items[];
 	private int len;
 	private Label lb;
-	private StoreItem[] storeItems;
 	
 	public ButtonItemDisplay(String title, StoreItem sitem[], int length) {
 
@@ -57,11 +58,8 @@ public class ButtonItemDisplay extends Panel implements Observer{
 			this.add(items[i]);
 			
 			// Add observer by Yifei
-			sitem[i].addObserver(this);
+			//sitem[i].addObserver(this);
 		}
-		
-		storeItems = sitem;
-
 	}
 
 	public void addListener(ActionListener l) {
@@ -94,20 +92,4 @@ public class ButtonItemDisplay extends Panel implements Observer{
 
 		items[idx].setValue(qty);
 	}
-
-	@Override
-	public void update(Observable p, Object x){
-		refresh(p);
-	}
-	
-	private void refresh(Observable p) {
-		for (int i = 0; i < items.length; i++) {
-			if (p == storeItems[i]) {
-				int val = storeItems[i].getQuantity();
-				String sval = String.valueOf(val);
-				items[i].setValue(sval);
-			}
-		}
-	}
-
 }
