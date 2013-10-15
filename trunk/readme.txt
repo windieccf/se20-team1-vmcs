@@ -31,3 +31,17 @@ Changed logs for each pattern
 /sg/edu/nus/iss/vmcs/store/Coin.java
 /sg/edu/nus/iss/vmcs/store/StoreController.java
 /sg/edu/nus/iss/vmcs/store/StoreIterator.java
+
+3. Strategy Pattern
+/sg/edu/nus/iss/vmcs/maintenance/MaintenanceController.java
+/sg/edu/nus/iss/vmcs/store/DrinksBrand.java
+/sg/edu/nus/iss/vmcs/store/PricingStrategyFactory.java
+/sg/edu/nus/iss/vmcs/store/SchoolStrategy.java
+/sg/edu/nus/iss/vmcs/store/CBDStrategy.java
+/sg/edu/nus/iss/vmcs/store/PricingStrategy.java
+/sg/edu/nus/iss/vmcs/store/HDBStrategy.java
+
+4. Observer Pattern
+/sg/edu/nus/iss/vmcs/machinery/StoreViewer.java
+/sg/edu/nus/iss/vmcs/maintenance/ButtonItemDisplay.java
+/sg/edu/nus/iss/vmcs/store/StoreItem.java
