@@ -10,7 +10,7 @@ import  sg.edu.nus.iss.vmcs.uifactory.VMCSEventHandler;
  * @version 1.0
  * @author Chen Changfeng
  */
-public class AWTConcreteTextField extends TextField implements AbstractTextField {
+public class AwtTextFieldAdapter extends TextField implements AbstractTextField {
 	
 	public void setColumns(int length) {
 		super.setColumns(length);
