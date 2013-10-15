@@ -32,7 +32,7 @@ public class ButtonItemDisplay extends Panel implements Observer{
 
 	public ButtonItemDisplay(String title, StoreItem sitem[], int length) {
 
-		storeItems = sitem;
+//		storeItems = sitem;
 		
 		len = length;
 		System.out.println("ButtonItemDisplay:" + len);
@@ -61,6 +61,8 @@ public class ButtonItemDisplay extends Panel implements Observer{
 			// Add observer by Yifei
 			sitem[i].addObserver(this);
 		}
+		
+		storeItems = sitem;
 
 	}
 
@@ -96,9 +98,12 @@ public class ButtonItemDisplay extends Panel implements Observer{
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		for(int i=0; i<items.length; i++){
+	public void update(Observable p, Object x){
+		refresh();
+	}
+	
+	private void refresh(){
+		for (int i = 0; i < items.length; i++) {
 			int val = storeItems[i].getQuantity();
 			String sval = String.valueOf(val);
 			items[i].setValue(sval);
