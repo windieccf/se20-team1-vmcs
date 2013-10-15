@@ -11,13 +11,15 @@ package sg.edu.nus.iss.vmcs.store;
 /**
  *
  *
- * @version 3.0 5/07/2003
- * @author Olivo Miotto, Pang Ping Li
+ * @version 14 Oct 2013
+ * @author Song Lei
  */
 
 public class DrinksBrand extends StoreObject {
 
 	private int price;
+	static private PricingStrategy strategy = null;
+
 
 	public DrinksBrand() {
 	}
@@ -33,6 +35,27 @@ public class DrinksBrand extends StoreObject {
 
 	public int getPrice() {
 		return (price);
+	}
+	
+	/**
+	 * Set the strategy
+	 * @return void
+	 */	
+	public static void setStrategy(String type){
+		strategy = PricingStrategyFactory.create(type);
+	}
+	
+	/**
+	 * Gets the selling price 
+	 * @return int
+	 */	
+	public int getSellingPrice() {
+		if (strategy==null) {
+			return this.getPrice();
+		} 
+		else {
+			return strategy.getPrice(this.price, this.name);	
+		}
 	}
 
 }
