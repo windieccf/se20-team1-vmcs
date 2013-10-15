@@ -98,6 +98,7 @@ public class StoreViewer extends Panel implements Observer{
 
 	public void update(Observable p, Object x) {
 		refresh();
+		
 	}
 
 	public void refresh() {
