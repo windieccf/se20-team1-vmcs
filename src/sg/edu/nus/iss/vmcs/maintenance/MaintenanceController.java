@@ -34,9 +34,13 @@ public class MaintenanceController implements Observer{
 		mCtrl = mctrl;
 		am = new AccessManager(this);
 		StoreController sctrl = mCtrl.getStoreController();
-		StoreItem[] items = sctrl.getStoreItems(Store.CASH);
-		for(int i=0; i<items.length; i++){
-			items[i].addObserver(this);
+		StoreItem[] cashItems = sctrl.getStoreItems(Store.CASH);
+		for(int i=0; i<cashItems.length; i++){
+			cashItems[i].addObserver(this);
+		}
+		StoreItem[] drinksItems = sctrl.getStoreItems(Store.DRINK);
+		for(int i=0; i<drinksItems.length; i++){
+			drinksItems[i].addObserver(this);
 		}
 	}
 
@@ -175,23 +179,34 @@ public class MaintenanceController implements Observer{
 			mpanel.closeDown();
 	}
 	
+	/**
+	 * implement Observer, update UI according the item type
+	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		StoreController sctrl = mCtrl.getStoreController();
-		StoreItem[] items = sctrl.getStoreItems(Store.CASH);
+		
+		boolean isDrinkItem = false;
+		if(arg0 instanceof DrinksStoreItem) isDrinkItem = true;
+		
+		StoreItem[] items;
+		if(isDrinkItem){
+			items = sctrl.getStoreItems(Store.DRINK);
+		} else {
+			items = sctrl.getStoreItems(Store.CASH);
+		}
+		
 		for (int i = 0; i < items.length; i++) {
 			if (arg0 == items[i]) {
-				int val = items[i].getQuantity();
-				try {
-					mpanel.getCoinDisplay().displayQty(i, val);
-				} catch (VMCSException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if(isDrinkItem){
+					this.displayDrinks(i);
+				} else {
+					this.displayCoin(i);
+					this.getTotalCash();
 				}
 				break;
 			}
 		}
-		this.getTotalCash();
+		
 	}
-
 }
