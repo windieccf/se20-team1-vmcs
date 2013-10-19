@@ -71,13 +71,29 @@ public class StoreController {
 		    CashStoreItem item = (CashStoreItem) cashLoader.getItem(i);
 			cStore.addItem(i, item);
 		}
+		
+		for (int i = 0,j= 1;i < numOfItems;i++,j++ )
+		{
+			 StoreItem item = (CashStoreItem) getStoreItem(Store.CASH, i);
+             Coin currentCoin = (Coin)item.getContent();
+         
+             if( j < numOfItems ){
+                 item = (CashStoreItem) getStoreItem(Store.CASH, j);
+                 currentCoin.addSuccessor((Coin)item.getContent());
+             }
+		}
 	}
 
 	public void storeCoin(Coin c) {
-		int idx = cStore.findCashStoreIndex(c);
-		CashStoreItem item;
-		item = (CashStoreItem) this.getStoreItem(Store.CASH, idx);
-		item.increment();
+		//int idx = cStore.findCashStoreIndex(c);
+		//CashStoreItem item;
+		//item = (CashStoreItem) this.getStoreItem(Store.CASH, idx);
+		//item.increment();
+		
+		
+		StoreItem item = (CashStoreItem) getStoreItem(Store.CASH, 0);
+		Coin current = (Coin) item.getContent();
+	    current.findSlot(cStore, c, 0);
 	}
 
 	public int getStoreSize(int type) {

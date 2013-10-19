@@ -15,10 +15,11 @@ package sg.edu.nus.iss.vmcs.store;
  * @author Olivo Miotto, Pang Ping Li
  */
 
-public class Coin extends StoreObject {
+public class Coin extends StoreObject implements Comparable,  CoinHandler {
 
     private int value;
     private double weight;
+    private Coin successor; 
 
     public Coin () {
     }
@@ -49,5 +50,33 @@ public class Coin extends StoreObject {
     		return 1;
 		return this.value-((Coin)arg0).value;
 	}
+    
+    @Override
+	public boolean equals(Object arg0) {
+		return arg0!=null && arg0 instanceof Coin && this.value==((Coin)arg0).value; 
+	}
+	
+    public void addSuccessor(Coin successor) {
+        this.successor = successor;
+    }
+    
+    public void findSlot(CashStore cs, Coin c, int i) {
+        if( this.equals(c) ){
+            // increment quantity
+            incrementCoin(cs, i);
+        }
+        else{
+            // search successor
+            if( successor != null ){
+                i++;
+                successor.findSlot(cs, c, i);
+            }
+        }
+    }
+
+    public void incrementCoin(CashStore cs, int i) {
+        StoreItem item = cs.getStoreItem(i);
+        item.increment();
+    }
 
   }
