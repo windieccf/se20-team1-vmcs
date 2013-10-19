@@ -16,18 +16,48 @@ import java.io.*;
  * @version 3.0 5/07/2003
  * @author Olivo Miotto, Pang Ping Li
  */
-public interface PropertyLoader {
+public abstract class PropertyLoader {
 	
-	public void initialize() throws IOException;
+	private String sfilename;
 	
-	public void saveProperty() throws IOException; 
+	public static final int fileTypeProperty=1;
+	public static final int xmlTypeProperty=2;
+	
+	public PropertyLoader(){}
+	public PropertyLoader(String filename){
+		this.sfilename=filename;
+	}
+	
+	public abstract void saveProperty() throws IOException; 
 
-	public int getNumOfItems();
+	public abstract int getNumOfItems();
 
-	public void setNumOfItems(int numItems);
+	public abstract void setNumOfItems(int numItems);
 
-	public StoreItem getItem (int index);
+	public abstract StoreItem getItem (int index);
 
-	public void setItem (int index, StoreItem item);
+	public abstract void setItem (int index, StoreItem item);
+	
+	private ProperytyLoaderImpl propertyLoaderImpl=null;
+	
+	protected ProperytyLoaderImpl getPropertyImpl(){
+		return propertyLoaderImpl;
+	}
+	
+	protected void setPropertyLoaderImpl(ProperytyLoaderImpl pImpl){
+		this.propertyLoaderImpl=pImpl;
+	}
 
+	public  void initialize() throws FileNotFoundException, IOException {
+		propertyLoaderImpl.initialize();
+	} 
+	
+	public String getValue(String key){
+		return propertyLoaderImpl.getValue(key);
+	}
+	
+	public void setValue(String key, String value){
+		propertyLoaderImpl.setItem(key, value);
+	}
+	
 }
