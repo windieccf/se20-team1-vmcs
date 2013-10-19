@@ -45,3 +45,8 @@ Changed logs for each pattern
 /sg/edu/nus/iss/vmcs/machinery/StoreViewer.java
 /sg/edu/nus/iss/vmcs/maintenance/ButtonItemDisplay.java
 /sg/edu/nus/iss/vmcs/store/StoreItem.java
+
+5. COR Pattern
+/sg/edu/nus/iss/vmcs/store/StoreController.java
+/sg/edu/nus/iss/vmcs/store/Coin.java
+/sg/edu/nus/iss/vmcs/store/CoinHandler.java
