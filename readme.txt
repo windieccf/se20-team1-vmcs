@@ -50,3 +50,13 @@ Changed logs for each pattern
 /sg/edu/nus/iss/vmcs/store/StoreController.java
 /sg/edu/nus/iss/vmcs/store/Coin.java
 /sg/edu/nus/iss/vmcs/store/CoinHandler.java
+
+
+6. Bridge Pattern
+/sg/edu/nus/iss/vmcs/system/MainController.java
+/sg/edu/nus/iss/vmcs/store/PropertyLoader.java
+/sg/edu/nus/iss/vmcs/store/ProperytyLoaderImpl.java
+/sg/edu/nus/iss/vmcs/system/CashPropertyLoader.java
+/sg/edu/nus/iss/vmcs/system/DrinkPropertyLoader.java
+/sg/edu/nus/iss/vmcs/system/FilePropertyLoaderImpl.java
+/sg/edu/nus/iss/vmcs/system/XmlPropertyLoaderImpl.java
