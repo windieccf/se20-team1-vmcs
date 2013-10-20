@@ -33,7 +33,9 @@ public abstract class PropertyLoader {
 		this.propertyLoaderImpl=propImpl;
 	}
 	
-	public abstract void saveProperty() throws IOException; 
+	public  void saveProperty() throws IOException{
+		propertyLoaderImpl.saveProperty();
+	} 
 
 	public  int getNumOfItems(){
 		
@@ -67,7 +69,7 @@ public abstract class PropertyLoader {
 	}
 	
 	public void setValue(String key, String value){
-		propertyLoaderImpl.setItem(key, value);
+		propertyLoaderImpl.setValue(key, value);
 	}
 	
 	public abstract void setPorpertyLoaderType(int propertyType);
