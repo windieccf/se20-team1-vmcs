@@ -29,6 +29,10 @@ public class CashPropertyLoader extends PropertyLoader {
 	public CashPropertyLoader(String filename){
 		super(filename);
 	}
+	
+	public CashPropertyLoader(ProperytyLoaderImpl propImpl){
+		super(propImpl);
+	}
 
 	public void saveProperty() throws IOException {
 		// TODO Auto-generated method stub
@@ -91,7 +95,7 @@ public class CashPropertyLoader extends PropertyLoader {
 		
 	}
 	
-	public void setPorpertyLoaderType(int propertyType){
+	/*public void setPorpertyLoaderType(int propertyType){
 		switch(propertyType){
 		case fileTypeProperty :
 			setPropertyLoaderImpl(new FilePropertyLoaderImpl(""));
@@ -101,7 +105,7 @@ public class CashPropertyLoader extends PropertyLoader {
 			break;
 			
 		}
-	}
+	}*/
 
 /*	private static final String NAME_LABEL     = "Name";
 	private static final String WEIGHT_LABEL   = "Weight";
