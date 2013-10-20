@@ -28,7 +28,7 @@ public class FilePropertyLoaderImpl implements ProperytyLoaderImpl {
 
 	public void saveProperty() throws IOException {
 		FileOutputStream stream = new FileOutputStream(fileName);
-		System.out.println("fileName"+fileName);
+		System.out.println("fileName" + fileName);
 		prop.store(stream, "");
 		stream.close();
 	}
@@ -53,9 +53,5 @@ public class FilePropertyLoaderImpl implements ProperytyLoaderImpl {
 	public void setValue(String key, String value) {
 		prop.setProperty(key, value);
 	}
-
-
-
-
 
 }
