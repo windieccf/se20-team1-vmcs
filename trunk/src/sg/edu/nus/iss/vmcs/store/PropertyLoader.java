@@ -22,10 +22,15 @@ public abstract class PropertyLoader {
 	
 	public static final int fileTypeProperty=1;
 	public static final int xmlTypeProperty=2;
+	private ProperytyLoaderImpl propertyLoaderImpl=null;
 	
 	public PropertyLoader(){}
 	public PropertyLoader(String filename){
 		this.sfilename=filename;
+	}
+	
+	public PropertyLoader(ProperytyLoaderImpl propImpl){
+		this.propertyLoaderImpl=propImpl;
 	}
 	
 	public abstract void saveProperty() throws IOException; 
@@ -38,15 +43,15 @@ public abstract class PropertyLoader {
 
 	public abstract void setItem (int index, StoreItem item);
 	
-	private ProperytyLoaderImpl propertyLoaderImpl=null;
+
 	
 	protected ProperytyLoaderImpl getPropertyImpl(){
 		return propertyLoaderImpl;
 	}
 	
-	protected void setPropertyLoaderImpl(ProperytyLoaderImpl pImpl){
+	/*protected void setPropertyLoaderImpl(ProperytyLoaderImpl pImpl){
 		this.propertyLoaderImpl=pImpl;
-	}
+	}*/
 
 	public  void initialize() throws FileNotFoundException, IOException {
 		propertyLoaderImpl.initialize();
@@ -60,4 +65,5 @@ public abstract class PropertyLoader {
 		propertyLoaderImpl.setItem(key, value);
 	}
 	
+	//public abstract void setPorpertyLoaderType(int propertyType);
 }
