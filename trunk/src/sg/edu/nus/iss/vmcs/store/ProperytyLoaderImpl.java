@@ -6,9 +6,9 @@ import java.io.IOException;
 public interface  ProperytyLoaderImpl {
 	public abstract void saveProperty() throws IOException; 
 
-	public  int getNumOfItems();
+	public int getNumOfItems();
 
-	public  void setNumOfItems(int numItems);
+	public void setNumOfItems(int numItems);
 
 	public  StoreItem getItem (int index);
 
