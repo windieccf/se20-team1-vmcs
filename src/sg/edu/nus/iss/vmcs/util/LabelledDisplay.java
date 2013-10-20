@@ -35,7 +35,6 @@ public class LabelledDisplay {
 	private AbstractPanel panel;
 	
 	public LabelledDisplay(String label, int length, int lt) {
-		System.out.println("test test shit");
 		panel = UIFactory.getInstance().createPanel();
 		if (lt == FLOW)
 			panel.setLayout(new FlowLayout(FlowLayout.CENTER));
