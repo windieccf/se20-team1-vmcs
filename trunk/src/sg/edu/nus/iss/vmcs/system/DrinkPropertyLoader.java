@@ -13,25 +13,25 @@ import java.io.IOException;
 import sg.edu.nus.iss.vmcs.store.*;
 
 /**
- *
- *
+ * 
+ * 
  * @version 3.0 5/07/2003
  * @author Olivo Miotto, Pang Ping Li
  */
 
 public class DrinkPropertyLoader extends PropertyLoader {
 
-	private static final String NAME_LABEL     = "Name";
-	private static final String PRICE_LABEL    = "Price";
+	private static final String NAME_LABEL = "Name";
+	private static final String PRICE_LABEL = "Price";
 	private static final String QUANTITY_LABEL = "Quantity";
-	
-	public DrinkPropertyLoader(String filename){
+
+	public DrinkPropertyLoader(String filename) {
 		super(filename);
 	}
-	public DrinkPropertyLoader(ProperytyLoaderImpl propImpl){
+
+	public DrinkPropertyLoader(ProperytyLoaderImpl propImpl) {
 		super(propImpl);
 	}
-
 
 	public StoreItem getItem(int index) {
 		// TODO Auto-generated method stub
@@ -53,7 +53,7 @@ public class DrinkPropertyLoader extends PropertyLoader {
 		DrinksStoreItem item = new DrinksStoreItem(brand, qty);
 		return item;
 	}
-	
+
 	public void setItem(int index, StoreItem drinksItem) {
 		// TODO Auto-generated method stub
 		int idx = index + 1;
@@ -73,7 +73,7 @@ public class DrinkPropertyLoader extends PropertyLoader {
 	@Override
 	public void setPorpertyLoaderType(int propertyType) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
