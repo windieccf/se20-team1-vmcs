@@ -35,9 +35,14 @@ public abstract class PropertyLoader {
 	
 	public abstract void saveProperty() throws IOException; 
 
-	public abstract int getNumOfItems();
+	public  int getNumOfItems(){
+		
+		return propertyLoaderImpl.getNumOfItems();
+	}
 
-	public abstract void setNumOfItems(int numItems);
+	public void setNumOfItems(int numItems){
+		propertyLoaderImpl.setNumOfItems(numItems);
+	}
 
 	public abstract StoreItem getItem (int index);
 
@@ -65,5 +70,5 @@ public abstract class PropertyLoader {
 		propertyLoaderImpl.setItem(key, value);
 	}
 	
-	//public abstract void setPorpertyLoaderType(int propertyType);
+	public abstract void setPorpertyLoaderType(int propertyType);
 }
