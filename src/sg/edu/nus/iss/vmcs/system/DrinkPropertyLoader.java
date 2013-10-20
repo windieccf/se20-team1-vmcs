@@ -28,26 +28,15 @@ public class DrinkPropertyLoader extends PropertyLoader {
 	public DrinkPropertyLoader(String filename){
 		super(filename);
 	}
-	
 	public DrinkPropertyLoader(ProperytyLoaderImpl propImpl){
 		super(propImpl);
 	}
-	
 	@Override
 	public void saveProperty() throws IOException {
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public int getNumOfItems() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public void setNumOfItems(int numItems) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	@Override
 	public StoreItem getItem(int index) {
 		// TODO Auto-generated method stub
@@ -84,6 +73,12 @@ public class DrinkPropertyLoader extends PropertyLoader {
 
 		itn = new String(QUANTITY_LABEL + idx);
 		setValue(itn, String.valueOf(item.getQuantity()));
+	}
+
+	@Override
+	public void setPorpertyLoaderType(int propertyType) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

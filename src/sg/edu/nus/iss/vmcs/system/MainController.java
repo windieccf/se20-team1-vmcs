@@ -57,6 +57,7 @@ public class MainController {
 		if(propertyType.equalsIgnoreCase("File")){
 			cashLoader=new CashPropertyLoader(new FilePropertyLoaderImpl(Environment.getCashPropFile()));
 			drinksLoader=new DrinkPropertyLoader(new FilePropertyLoaderImpl(Environment.getDrinkPropFile()));
+			System.out.println("propertyFileName is :"+Environment.getCashPropFile());
 		}
 		else{
 			cashLoader=new CashPropertyLoader(new XmlPropertyLoaderImpl(Environment.getCashPropFile()));
