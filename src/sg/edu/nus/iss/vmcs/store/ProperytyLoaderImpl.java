@@ -9,10 +9,6 @@ public interface  ProperytyLoaderImpl {
 	public int getNumOfItems();
 
 	public void setNumOfItems(int numItems);
-
-	public  StoreItem getItem (int index);
-
-	public  void setItem (String key, String value);
 	
 	public  void initialize() throws FileNotFoundException,IOException;
 	
