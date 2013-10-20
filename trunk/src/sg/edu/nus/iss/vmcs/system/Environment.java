@@ -26,7 +26,10 @@ public class Environment {
 	// property keys
 	public final static String DRINK_PROP_FILE = "drinkFile";
 	public final static String CASH_PROP_FILE = "cashFile";
+	public final static String DRINK_PROP_XML="drinkXML";
+	public final static String CASH_PROP_XML="cashXML";
 	public final static String PASSWORD = "password";
+	 public final static String PERSISTENCE_TYPE="persistenceType";
 
 	private static Properties prop;
 
@@ -52,9 +55,21 @@ public class Environment {
 		fn = prop.getProperty(CASH_PROP_FILE);
 		return fn;
 	}
+	
+	public static String getDrinkPropXML(){
+		return prop.getProperty(DRINK_PROP_XML);
+	}
+	
+	public static String getCashPropXML(){
+		return prop.getProperty(CASH_PROP_XML);
+	}
 
 	// if you put password in the property file, the password is obtained here.
 	public static String getPassword() {
 		return prop.getProperty(PASSWORD);
+	}
+	
+	public static String getPropertyType(){
+		return prop.getProperty(PERSISTENCE_TYPE);
 	}
 }

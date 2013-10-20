@@ -44,7 +44,7 @@ public class XmlPropertyLoaderImpl implements ProperytyLoaderImpl{
 	@Override
 	public void initialize() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("This is xml File");
 	}
 
 	@Override

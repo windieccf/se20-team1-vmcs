@@ -28,6 +28,10 @@ public class MainController {
 	private MachineryController   machineryCtrl;
 	private MaintenanceController maintenanceCtrl;
 	private StoreController       storeCtrl;
+	private CashPropertyLoader cashLoader;
+	private DrinkPropertyLoader drinksLoader;
+	
+	private String propertyType;
 
 	private String      propertyFile;
 
@@ -45,13 +49,25 @@ public class MainController {
 		}
 	}
 
+	public void setPropertyType(){
+		this.propertyType=Environment.getPropertyType();
+	}
+	
+	public void setPropertyFileName(){
+		if(propertyType.equalsIgnoreCase("File")){
+			cashLoader=new CashPropertyLoader(new FilePropertyLoaderImpl(Environment.getCashPropFile()));
+			drinksLoader=new DrinkPropertyLoader(new FilePropertyLoaderImpl(Environment.getDrinkPropFile()));
+		}
+		else{
+			cashLoader=new CashPropertyLoader(new XmlPropertyLoaderImpl(Environment.getCashPropFile()));
+			drinksLoader=new DrinkPropertyLoader(new XmlPropertyLoaderImpl(Environment.getDrinkPropFile()));
+			
+		}
+	}
+	
 	public void initialize() throws VMCSException {
 		try {
 			Environment.initialize(propertyFile);
-			CashPropertyLoader cashLoader =
-				new CashPropertyLoader(Environment.getCashPropFile());
-			DrinkPropertyLoader drinksLoader =
-				new DrinkPropertyLoader(Environment.getDrinkPropFile());
 			cashLoader.initialize();
 			drinksLoader.initialize();
 			storeCtrl = new StoreController(cashLoader, drinksLoader);
@@ -66,6 +82,8 @@ public class MainController {
 				e.getMessage());
 		}
 	}
+	
+
 
 	public SimulationController getSimulationController() {
 		return simulatorCtrl;
