@@ -39,17 +39,6 @@ public class CashPropertyLoader extends PropertyLoader {
 		
 	}
 
-	public int getNumOfItems() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setNumOfItems(int numItems) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 	public StoreItem getItem(int index) {
 		// TODO Auto-generated method stub
 		int idx = index + 1;
@@ -92,6 +81,12 @@ public class CashPropertyLoader extends PropertyLoader {
 
 		itn = new String(QUANTITY_LABEL + idx);
 		setValue(itn, String.valueOf(item.getQuantity()));
+		
+	}
+
+	@Override
+	public void setPorpertyLoaderType(int propertyType) {
+		// TODO Auto-generated method stub
 		
 	}
 	
